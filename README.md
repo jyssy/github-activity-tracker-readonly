@@ -9,7 +9,7 @@ A local macOS LaunchAgent collects pull request and issue lifecycle events from 
 - The deployed script deduplicates events in `~/Library/Application Support/GitHubActivityTracker/data/activity.jsonl`.
 - `data/state.json` in this repository is a local symlink to the deployed state file for convenient viewing; it remains ignored by Git with the rest of `data/`.
 - `data/daily-summary.md` is regenerated from the structured history after each successful run and starts with the latest run status, including an explicit “No new activity found in this run” line when the run adds no events.
-- `data/state.json` stores the last successful run time and latest run message so a later run can catch up after sleep or a missed day (set as a symlink because launchd can't read the Python in ths Documents location).
+- `data/state.json` stores the last successful run time and latest run message so a later run can catch up after sleep or a missed day (set as a symlink because launchd can't read the Python in the Documents location).
 - `data/logs/tracker.log` records run status and errors. launchd stdout and stderr logs are stored in the same `data/logs/` directory.
 - launchd/com.access-ci.github-activity-tracker.plist is the LaunchAgent installed in ~/Library/LaunchAgents/.
 
