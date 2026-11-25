@@ -179,7 +179,13 @@ def load_existing_ids():
     return ids
 
 
-def write_digest():
+def run_status_message(new_event_count):
+    if new_event_count:
+        return f"{new_event_count} new lifecycle events."
+    return "No new activity found in this run."
+
+
+def write_digest(run_time, status_message):
     records = []
     if ACTIVITY_FILE.exists():
         with ACTIVITY_FILE.open(encoding="utf-8") as stream:
@@ -195,6 +201,8 @@ def write_digest():
         "# GitHub Activity Digest",
         "",
         "Lifecycle activity for the configured repositories. Generated locally from activity.jsonl.",
+        "",
+        f"Latest run: {iso_utc(run_time)} — {status_message}",
         "",
     ]
     if not grouped:
@@ -251,9 +259,14 @@ def main():
         with ACTIVITY_FILE.open("a", encoding="utf-8") as stream:
             for item in new_records:
                 stream.write(json.dumps(item, sort_keys=True, ensure_ascii=False) + "\n")
-    write_digest()
-    save_state({"last_success_utc": iso_utc(now)})
-    log.info("Run completed: %d new lifecycle events", len(new_records))
+    status_message = run_status_message(len(new_records))
+    write_digest(now, status_message)
+    save_state({
+        "last_success_utc": iso_utc(now),
+        "last_run_message": status_message,
+        "new_lifecycle_events": len(new_records),
+    })
+    log.info("Run completed: %s", status_message)
 
 
 if __name__ == "__main__":

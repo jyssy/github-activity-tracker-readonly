@@ -14,14 +14,14 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>/usr/bin/python3</string>
-		<string>/Users/jelambeadmin/Documents/access-sysops/github-activity-tracker-readonly/activity_tracker.py</string>
+		<string>/Users/jelambeadmin/Library/Application Support/GitHubActivityTracker/activity_tracker.py</string>
 	</array>
 	<key>RunAtLoad</key>
 	<false/>
 	<key>StandardErrorPath</key>
-	<string>/Users/jelambeadmin/Documents/access-sysops/github-activity-tracker-readonly/data/logs/launchd.stderr.log</string>
+	<string>/Users/jelambeadmin/Library/Application Support/GitHubActivityTracker/data/logs/launchd.stderr.log</string>
 	<key>StandardOutPath</key>
-	<string>/Users/jelambeadmin/Documents/access-sysops/github-activity-tracker-readonly/data/logs/launchd.stdout.log</string>
+	<string>/Users/jelambeadmin/Library/Application Support/GitHubActivityTracker/data/logs/launchd.stdout.log</string>
 	<key>StartCalendarInterval</key>
 	<array>
 		<dict>
@@ -66,6 +66,6 @@
 		</dict>
 	</array>
 	<key>WorkingDirectory</key>
-	<string>/Users/jelambeadmin/Documents/access-sysops/github-activity-tracker-readonly</string>
+	<string>/Users/jelambeadmin/Library/Application Support/GitHubActivityTracker</string>
 </dict>
 </plist>
